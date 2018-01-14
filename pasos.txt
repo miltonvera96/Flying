@@ -1,0 +1,16 @@
+Lanzar el daemon
+mongodb-osx-x86_64-3.6.0/bin/mongod
+
+Lanzar el cliente
+mongodb-osx-x86_64-3.6.0/bin/mongo
+
+Importar datos desde csv
+Rutas: mongodb-osx-x86_64-3.6.0/bin/mongoimport -d flying -c routes --type csv --file db-flying/routes-clean.dat --headline
+Aeropuertos: mongodb-osx-x86_64-3.6.0/bin/mongoimport -d flying -c airports --type csv --file db-flying/airports-clean.dat --headerline
+
+Instalar pymongo y bson
+pip install pymongo
+pip install bson
+
+Lanzar el servidor en flask
+python app/flying.py 

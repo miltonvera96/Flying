@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Flying</title>
+    <link rel="stylesheet" href="static/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Flying</h1>
+            <p>¡Tu mejor opción para b&uacute;squeda de vuelos!</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-md-offset-3 col-md-6 centered">
+            <form method="POST" action="/find">
+                <div class="form-group col-md-8">
+                    <label class="col-sm-2 col-form-label">Origen</label>
+                    <select name="origen" class="form-control">
+                      <% if (data.length > 0) { %>
+                        <% data.forEach(function(item, index){ %>
+                           <option value="<%= item%>"><%= item%></option>
+                        <% });%>
+                      <% } %>
+                    </select>
+                </div>
+                <div class="form-group col-md-8">
+                    <label class="col-sm-2 col-form-label">Destino</label>
+                    <select name="destino" class="form-control">
+                      <% if (data.length > 0) { %>
+                        <% data.forEach(function(item, index){ %>
+                           <option value="<%= item%>"><%= item%></option>
+                        <% });%>
+                      <% } %>
+                    </select>
+                </div>
+                <div class="form-group col-md-8">
+                    <input type="radio" name="tipo" value="0" checked class="form-check-input"> Vuelo directo
+                    <input type="radio" name="tipo" value="1" class="form-check-input"> Vuelo con escalas
+                    <br>
+                </div>
+                <div class="form-group col-md-8 centered">
+                    <input id="enviar" type="submit" value="Enviar" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+        <% if (rutas.length > 0) { %>
+        <div class="col-md-offset-2 col-md-8 text-center">
+            <h2>Resultados de la búsqueda</h2>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Aerol&iacute;nea</th>
+                        <th>Iata</th>
+                        <th>Pa&iacute;s</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% rutas.forEach(function(item, index){ %>
+                    <tr>
+                        <td><%= item.name%></td>
+                        <td><%= item.iata%></td>
+                        <td><%= item.country%></td>
+                    </tr>
+                    <% });%>
+                </tbody>
+            </table>
+        </div>
+        <%}%>
+    </div>
+
+    
+</body>
+
+</html>
